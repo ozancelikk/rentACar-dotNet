@@ -5,8 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Business.Abstract {
-    public interface IProductService {
-        List<Car> GetAll();
+namespace DataAccess.Abstract {
+    public interface ICarDal : IEntityRepository<Car> {
+        
+
     }
 }

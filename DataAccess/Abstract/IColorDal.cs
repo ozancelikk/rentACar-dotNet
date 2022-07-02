@@ -6,12 +6,6 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace DataAccess.Abstract {
-    public interface IProductDal {
-        Car GetById(int id);
-        List<Car> GetAll();
-        void Add(Car car);
-        void Update(Car car);
-        void Delete(Car car);
-
+    public interface IColorDal : IEntityRepository<Color> {
     }
 }
