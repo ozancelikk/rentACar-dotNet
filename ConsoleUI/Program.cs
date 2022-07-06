@@ -21,8 +21,8 @@ namespace ConsoleUI {
 
             Car newCar = new Car() { Id = 10, BrandId = 1, ColorId = 1, DailyPrice = 300, ModelYear = "2001", Description = "yeni model araba cok iyi" };
             carManager.Add(newCar);
-
-            foreach (var car in carManager.GetAll()) {
+            
+            foreach (var car in carManager.GetAll().Data) {
                 Console.WriteLine(car.Id);
             }
         }
@@ -30,17 +30,17 @@ namespace ConsoleUI {
             ColorManager colorManager = new ColorManager(new EfColorDal());
 
             
-            foreach(var color in colorManager.GetAll()) {
+            foreach(var color in colorManager.GetAll().Data) {
                 Console.WriteLine(color.Name + " - " + color.Id);
             }
             colorManager.Delete(new Color() { Id = 10, Name = "Pembe" });
-            foreach (var color in colorManager.GetAll()) {
+            foreach (var color in colorManager.GetAll().Data) {
                 Console.WriteLine(color.Name + " - " + color.Id);
             }
         }
         private static void CarDetailtTest() {
             CarManager carmanager = new CarManager(new EfCarDal());
-            foreach (var carDetail in carmanager.GetCarDetails()) {
+            foreach (var carDetail in carmanager.GetCarDetails().Data) {
                 Console.WriteLine(carDetail.CarName + " - " + carDetail.ColorName + " - " + carDetail.BrandName + " - " + carDetail.DailyPrice );
             }
             
