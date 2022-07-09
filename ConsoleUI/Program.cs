@@ -13,13 +13,14 @@ namespace ConsoleUI {
         public static void Main(string[] args) {
             //CarTest();
             //ColorTest();
-            CarDetailtTest();
+            //CarDetailtTest();
+            CustomerTest();
         }
 
         private static void CarTest() {
             CarManager carManager = new CarManager(new EfCarDal());
 
-            Car newCar = new Car() { Id = 10, BrandId = 1, ColorId = 1, DailyPrice = 300, ModelYear = "2001", Description = "yeni model araba cok iyi" };
+            Car newCar = new Car() { Id = 11, BrandId = 2, ColorId = 2, DailyPrice = 600, ModelYear = "2002", Description = "perfect machine" };
             carManager.Add(newCar);
             
             foreach (var car in carManager.GetAll().Data) {
@@ -45,5 +46,17 @@ namespace ConsoleUI {
             }
             
         }
+        private static void CustomerTest() {
+            CustomerManager customerManager = new CustomerManager(new EfCustomerDal());
+            customerManager.Add(new Customer() { UserId = 1, CompanyName = "Abc Company" });
+            customerManager.Add(new Customer() { UserId = 3, CompanyName = "Wzq Company" });
+            customerManager.Add(new Customer() { UserId = 6, CompanyName = "Plv Company" });
+
+            foreach(var customer in customerManager.GetAll().Data) {
+                Console.WriteLine(customer.UserId);
+            }
+        }
+
+        
     }
 }
