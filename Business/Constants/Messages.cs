@@ -14,5 +14,7 @@ namespace Business.Constants
         public static string CarsListed = "Ürünler listelendi";
         public static string CustomerAdded = "Müşteri eklendi";
         public static string ReturnDateIsNull = "Teslim tarihi girilmedi";
+
+        public static string ItemAdded = "Fotograf eklendi";
     }
 }
