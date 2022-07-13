@@ -1,5 +1,7 @@
 ﻿using Business.Abstract;
 using Business.Constants;
+using Business.ValidationRules.FluentValidation;
+using Core.Aspects.Autofac.Validation;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
@@ -17,17 +19,11 @@ namespace Business.Concrete {
             _carDal = carDal;
         }
 
+        [ValidationAspect(typeof(CarValidator))]
         public IResult Add(Car car) {
-            if(car.Description.Length <= 10) {
-                //Console.WriteLine("Açıklama 10 karakter daha az olamaz");
-                //return new Result(false, "Açıklama 10 karakter daha az olamaz");
-                return new ErrorResult("Açıklama 10 karakter daha az olamaz");
-            } else if(car.DailyPrice <=0){
-                //Console.WriteLine("Arabanın günlük fiyatı 0TL'den büyük olması gereklidir.");
-                return new ErrorResult("Arabanın günlük fiyatı 0TL'den büyük olması gereklidir.");
-            } else {
-                _carDal.Add(car);
-            }
+            
+            _carDal.Add(car);
+            
             //return new Result(true,"Ekleme yapıldı")
             return new SuccessResult("Araba eklendi");
             
