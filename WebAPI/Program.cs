@@ -72,6 +72,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+app.UseStaticFiles();
+
 app.UseCors(builder => builder.WithOrigins("http://localhost:3000").AllowAnyHeader()); // önemli
 
 app.UseHttpsRedirection();
