@@ -20,6 +20,8 @@ namespace DataAccess.Concrete.EntityFramework {
                              on cr.ColorId equals cl.Id
                              join b in context.Brands
                              on cr.BrandId equals b.Id
+                             join mn in context.Models
+                             on cr.ModelId equals mn.Id
                              select new CarDetailDto
                              {
                                  CarId = cr.Id,
@@ -27,7 +29,7 @@ namespace DataAccess.Concrete.EntityFramework {
                                  ColorId = cl.Id,
                                  ColorName = cl.Name,
                                  BrandName = b.Name,
-                                 ModelName = (from mn in context.Models where mn.BrandId == cr.Id select mn.Name).FirstOrDefault(),
+                                 ModelName = mn.Name,
                                  DailyPrice = cr.DailyPrice,
                                  Description = cr.Description,
                                  ModelYear = cr.ModelYear,
