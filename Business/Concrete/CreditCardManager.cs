@@ -46,7 +46,7 @@ namespace Business.Concrete
         [CacheAspect]
         public IDataResult<CreditCard> GetById(int id)
         {
-            throw new NotImplementedException();
+            return new SuccessDataResult<CreditCard>(_creditCardDal.Get(c => c.Id == id));
         }
 
         public IDataResult<List<CreditCard>> GetByUserId(int userId)

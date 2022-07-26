@@ -22,12 +22,11 @@ namespace Business.Concrete {
         }
 
         [ValidationAspect(typeof(CarValidator))]
-        [SecuredOperation("car.add,admin")]
+        //[SecuredOperation("car.add,admin")]
         [CacheRemoveAspect("IProductService.Get")]
         public IResult Add(Car car) {
             
             _carDal.Add(car);
-            
             //return new Result(true,"Ekleme yapıldı")
             return new SuccessResult("Araba eklendi");
             

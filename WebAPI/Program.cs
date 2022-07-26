@@ -74,6 +74,8 @@ if (app.Environment.IsDevelopment())
 
 app.UseStaticFiles();
 
+app.ConfigureCustomExceptionMiddleware();
+
 app.UseCors(builder => builder.WithOrigins("http://localhost:3000").AllowAnyHeader()); // önemli
 
 app.UseHttpsRedirection();
