@@ -71,5 +71,16 @@ namespace WebAPI.Controllers
             }
             return BadRequest(result);
         }
+
+        [HttpGet("getmodelsbybrandid")]
+        public IActionResult GetModelsByBrandId(int id)
+        {
+            var result = _modelService.GetModelsByBrandId(id);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
     }
 }

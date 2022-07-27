@@ -16,5 +16,6 @@ namespace Business.Abstract
         IResult Add(Model model);
         IResult Delete(Model model);
         IResult Update(Model model);
+        IDataResult<List<Model>> GetModelsByBrandId(int id);
     }
 }

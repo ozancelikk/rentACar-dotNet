@@ -45,5 +45,10 @@ namespace Business.Concrete
             _modelDal.Update(model);
             return new SuccessResult("Model güncellendi");
         }
+
+        public IDataResult<List<Model>> GetModelsByBrandId(int id)
+        {
+            return new SuccessDataResult<List<Model>>(_modelDal.GetAll(m => m.BrandId == id));
+        }
     }
 }
