@@ -27,6 +27,7 @@ namespace WebAPI.Controllers
             var result = _authService.CreateAccessToken(userToLogin.Data);
             if (result.Success)
             {
+                
                 return Ok(result);
             }
 
@@ -51,6 +52,19 @@ namespace WebAPI.Controllers
             }
 
             return BadRequest(result);
+        }
+
+        [HttpPost("changepassword")]
+        public ActionResult ChangeUserPassword(ChangePasswordDto changePasswordDto)
+        {
+            var changePasswordResult = _authService.ChangePassword(changePasswordDto);
+
+            if (changePasswordResult.Success)
+            {
+                return Ok(changePasswordResult);
+            }
+
+            return BadRequest(changePasswordResult);
         }
     }
 }

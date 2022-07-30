@@ -19,6 +19,8 @@ namespace Business.Abstract
         IResult Delete(User user);
         IResult Update(User user);
 
+        IResult UpdateHelper(User user);
+
 
     }
 }

@@ -57,6 +57,27 @@ namespace Business.Concrete
             return new SuccessDataResult<User>(userToCheck, Messages.SuccessfulLogin);
         }
 
+        public IResult ChangePassword(ChangePasswordDto changePasswordDto)
+        {
+            byte[] passwordHash, passwordSalt;
+            var userToCheck = _userService.GetByMail(changePasswordDto.UserEmail).Data;
+            if (userToCheck == null)
+            {
+                return new ErrorDataResult<User>("Email geçersiz");
+            }
+            if (!HashingHelper.VerifyPasswordHash(changePasswordDto.oldPass, userToCheck.PasswordHash, userToCheck.PasswordSalt))
+            {
+                return new ErrorDataResult<User>("Eski şifre geçersiz");
+            }
+            HashingHelper.CreatePasswordHash(changePasswordDto.newPass, out passwordHash, out passwordSalt);
+            userToCheck.PasswordHash = passwordHash;
+            userToCheck.PasswordSalt = passwordSalt;
+            _userService.UpdateHelper(userToCheck);
+
+            return new SuccessResult("Şifre başarıyla değiştirildi");
+
+        }
+
         public IResult UserExists(string email)
         {
             if (_userService.GetByMail(email).Data != null)
@@ -72,5 +93,7 @@ namespace Business.Concrete
             var accessToken = _tokenHelper.CreateToken(user, claims);
             return new SuccessDataResult<AccessToken>(accessToken, Messages.SuccessfulLogin);
         }
+
+
     }
 }

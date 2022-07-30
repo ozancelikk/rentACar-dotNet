@@ -49,5 +49,11 @@ namespace Business.Concrete
             _userDal.Update(user);
             return new SuccessResult();
         }
+
+        public IResult UpdateHelper(User user)
+        {
+            _userDal.Update(user);
+            return new SuccessResult(Messages.Updated);
+        }
     }
 }
