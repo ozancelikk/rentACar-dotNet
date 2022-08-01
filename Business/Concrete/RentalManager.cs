@@ -20,10 +20,6 @@ namespace Business.Concrete
         }
         public IResult Add(Rental rental) {
 
-            if(rental.ReturnDate == null) {
-                return new ErrorResult(Messages.ReturnDateIsNull);
-            }
-
             _rentalDal.Add(rental);
             return new SuccessResult();
         }
@@ -51,9 +47,9 @@ namespace Business.Concrete
             return new SuccessDataResult<List<RentalDetailDto>>(_rentalDal.GetRentalDetails(r => r.CarId == id));
         }
 
-        public IDataResult<List<RentalDetailDto>> GetRentalDetailsByCustomerId(int customerId)
+        public IDataResult<List<RentalDetailDto>> GetRentalDetailsByUserId(int userId)
         {
-            return new SuccessDataResult<List<RentalDetailDto>>(_rentalDal.GetRentalDetails(r => r.CustomerId == customerId));
+            return new SuccessDataResult<List<RentalDetailDto>>(_rentalDal.GetRentalDetails(r => r.UserId == userId));
         }
 
         public IResult Update(Rental rental) {

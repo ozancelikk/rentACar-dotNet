@@ -20,7 +20,6 @@ namespace Entities.DTOs
         public DateTime RentDate { get; set; }
         public DateTime? ReturnDate { get; set; }
         public decimal Amount { get; set; }
-        public int CustomerId { get; set; }
         public int UserId { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
