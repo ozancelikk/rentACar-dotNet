@@ -1,4 +1,5 @@
-# Multitier architecture project. Daily car rental simulation.  
+# Multitier architecture project
+# Daily car rental simulation
 
    <a href = "https://www.linkedin.com/in/mustafahincal/"><img src = "https://marka-logo.com/wp-content/uploads/2020/04/Linkedin-Logo.png" width = "85" height = "50" alt = "My Linkedin Profile"/></a>  
 ### E-mail Address: mustafahncal@gmail.com
