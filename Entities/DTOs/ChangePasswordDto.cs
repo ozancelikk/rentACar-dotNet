@@ -8,7 +8,7 @@ namespace Entities.DTOs
     public class ChangePasswordDto : IDto
     {
         public string UserEmail { get; set; }
-        public string oldPass { get; set; }
-        public string newPass { get; set; }
+        public string OldPass { get; set; }
+        public string NewPass { get; set; }
     }
 }
